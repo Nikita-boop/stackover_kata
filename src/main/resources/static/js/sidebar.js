@@ -1,8 +1,21 @@
 const sidebar = document.createElement("sidebar");
-sidebar.innerHTML = "<div class='nav flex-column'>" +
-    "<a href='#'>About</a>" +
-    "<a href='#'>Services</a>" +
-    "<a href='#'>Clients</a>" +
-    "<a href='#'>Contact</a>" +
-    "</div>";
-document.body.prepend(sidebar);
+const sidebar_container = document.querySelector(".page-sidebar");
+
+sidebar.innerHTML = `
+    <div class="sidebar">
+       <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Вопросы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Участники</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Неотвеченные</a>
+          </li>
+       </ul>
+    </div>`
+sidebar_container.append(sidebar)

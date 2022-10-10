@@ -5,3 +5,111 @@
 .stat-footer {
     font-size:0.8rem;
 }
+
+button{
+    width: 100px;
+}
+
+.stat-footer {
+    font-size:0.8rem;
+}
+body {
+    min-width: 320px;
+    font-size: 14px;
+    font-family: Arial;
+    background-color: #f2f2f2;
+    color: #626262;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+header .navbar {
+    background-color: lightgrey;
+    font-family: "Copperplate Gothic Bold", serif;
+    font-weight: 400;
+    font-size: 20px;
+    border: 5px;
+    height: auto;
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+header .navbar-brand {
+    font-family: "Copperplate Gothic Bold", serif;
+    font-size: 22px;
+    color: #000;
+}
+
+header .nav-item {
+    font-family: "Copperplate Gothic Bold", serif;
+    font-size: 20px;
+    color: #000;
+}
+
+header .btn {
+
+}
+
+header .nav-item a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #000;
+    height: 1px;
+    transform: scale(0);
+    transition: all .3s;
+}
+
+header .nav-item a:hover::after {
+    transform: scale(1);
+}
+
+.grid-posts {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.grid-posts .card {
+    border: 0;
+    margin-bottom: 100px;
+    border-radius: 15px;
+}
+
+.grid-posts .card-body {
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+
+/*footer {*/
+/*    background-color: black;*/
+/*    bottom: 1px;*/
+/*    width: 100%;*/
+/*    font-size: 15px;*/
+
+/*}*/
+
+.footer-left a {
+    color: black;
+    margin-right: 20px;
+}
+
+.footer-right a {
+    color: black;
+    margin-left: 20px;
+}
+.my-class {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar {
+    margin-left: 0px;
+    width: content-box;
+    height: 100%;
+}
