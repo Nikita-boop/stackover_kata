@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Tags</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" >
+  <a href="#" class="navbar=brand">
+    <img src="https://gitlab.com/k3352/stackover_kata/-/raw/dev/src/main/resources/static/images/logo.svg" width="180" height="50" alt="logo">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggler="collapse"
+  data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a href="#" class="nav-link">О нас</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input type="text" class="form-control mr-sm-2" placeholder="Поиск">
+      <button class="btn btn-outline-success my-2 my-sm-3">Искать</button>
+    </form>
+    <div>
+      <button form="login" class="fs-5 pe-4 btn btn-dark text-white-50" type="submit">Зайти</button>
+      <form id="login" method="POST" th:action="@{/login}"></form>
+    </div>
+    <div>
+      <button form="logout" class="fs-5 pe-4 btn btn-dark text-white-50" type="submit">Выйти</button>
+      <form id="logout" method="POST" th:action="@{/logout}"></form>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+<div class="row"><div class="col-md-6 mx-auto"><div class="pt-5"><h1>Метки</h1></div></div></div>
+<div class="row"><div class="col-md-6 mx-auto"><div class="pt-5"><p>Метка — это ключевое слово или ярлык, который классифицирует ваш вопрос среди других похожих вопросов</p></div></div></div>
+<div class="row"><div class="col-md-6 mx-auto"><p>Использование правильных меток облегчает другим пользователям поиск и ответ на ваш вопрос.</p></div></div>
+
+
+<div class="container d-flex align-items-start mb-3" style="position:fixed">
+  <div>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a href="#"><i class="fa-solid fa-thumbs-up">Вопросы</i></a>
+        </li>
+        <li class="list-group-item">
+          <a href="#"><i class="fa-solid fa-message">Метки</i></a>
+        </li>
+        <li class="list-group-item">
+          <a href="#"><i class="fa-solid fa-square-check">Пользователи</i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="w-100"></div>
+
+<div class="pt-5">
+  <div class="d-flex w-100 justify-content-center">
+  <div class="card-deck">
+<div class="card bg-light mb-1" style="max-width: 30rem;">
+  <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+  <div class="card-body">
+    <p class="card-text">Информация по тегу</p>
+  </div>
+</div>
+
+
+<div class="card bg-light mb-1" style="max-width: 25rem;">
+  <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+  <div class="card-body">
+    <p class="card-text">Информация по тегу</p>
+  </div>
+</div>
+
+  <div class="card bg-light mb-1" style="max-width: 25rem;">
+    <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+  <div class="card-body">
+    <p class="card-text">Информация по тегу</p>
+  </div>
+</div>
+
+
+<div class="card bg-light mb-1" style="max-width: 18rem;">
+  <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+  <div class="card-body">
+    <p class="card-text">Информация по тегу</p>
+  </div>
+</div>
+</div>
+</div>
+</div>
+  <div class="w-100"></div>
+
+<div class="pt-5">
+  <div class="d-flex w-100 justify-content-center">
+    <div class="card-deck">
+      <div class="card bg-light mb-1" style="max-width: 18rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+
+
+
+      <div class="card bg-light mb-1" style="max-width: 18rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+
+      <div class="card bg-light mb-1" style="max-width: 18rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+
+      <div class="card bg-light mb-1" style="max-width: 18rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="w-100"></div>
+
+<div class="pt-5 pb-5">
+  <div class="d-flex w-100 justify-content-center">
+    <div class="card-deck">
+      <div class="card bg-light mb-1" style="max-width: 18rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+
+
+      <div class="card bg-light mb-1" style="max-width: 25rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+
+      <div class="card bg-light mb-1" style="max-width: 25rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+
+
+      <div class="card bg-light mb-1" style="max-width: 18rem;">
+        <a href="#" class="card-link"><div class="card-header">Тег</div></a>
+        <div class="card-body">
+          <p class="card-text">Информация по тегу</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-bottom"></nav>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="/js/sidebar.js"></script>
+<script type="text/javascript" src="/js/header.js"></script>
+<script type="text/javascript" src="/js/footer.js"></script>
+
+</body>
+</html>
