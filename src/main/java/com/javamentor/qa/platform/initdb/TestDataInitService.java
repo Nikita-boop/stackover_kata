@@ -3,8 +3,10 @@ package com.javamentor.qa.platform.initdb;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.Tag;
 import com.javamentor.qa.platform.models.entity.question.answer.Answer;
+import com.javamentor.qa.platform.models.entity.user.Role;
 import com.javamentor.qa.platform.models.entity.user.User;
 import com.javamentor.qa.platform.models.entity.user.reputation.Reputation;
+import com.javamentor.qa.platform.service.abstracts.model.UserService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,16 @@ import java.util.List;
 @Service
 public class TestDataInitService {
 
+    final
+    UserService userService;
+
+    public TestDataInitService(UserService userService) {
+        this.userService = userService;
+    }
 
     @Transactional
     public void createEntity() {
-
+        createUsers();
     }
 
     public PasswordEncoder passwordEncoder() {
@@ -29,7 +37,19 @@ public class TestDataInitService {
     List<User> users = new ArrayList<>();
 
     private void createUsers() {
+        if (userService.getByEmail("durov@example.com") == null && userService.getByEmail("admin@example.com") == null) {
+            User user = new User("Павел Дуров", "durov@example.com",
+                    passwordEncoder().encode("password"));
+            Role role_user = new Role("ROLE_USER");
 
+            User admin = new User("Стив Возняк", "admin@example.com",
+                    passwordEncoder().encode("password"));
+            Role role_admin = new Role("ROLE_ADMIN");
+
+            user.setRole(role_user);
+            admin.setRole(role_admin);
+            userService.persistAll(user, admin);
+        }
     }
 
     List<Tag> tags = new ArrayList<>();
