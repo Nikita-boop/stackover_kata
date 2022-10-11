@@ -37,7 +37,7 @@ public class TestDataInitService {
     List<User> users = new ArrayList<>();
 
     private void createUsers() {
-        if (userService.getByEmail("durov@example.com") == null && userService.getByEmail("admin@example.com") == null) {
+        if (userService.getByEmail("durov@example.com").isEmpty() && userService.getByEmail("admin@example.com").isEmpty()) {
             User user = new User("Павел Дуров", "durov@example.com",
                     passwordEncoder().encode("password"));
             Role role_user = new Role("ROLE_USER");
