@@ -616,6 +616,8 @@ this.mockMvc
 
 3. В строке Environment variables внести данные необходимые для подключения к базе данных. Название переменных следует следует взять согласно тому как они были объявлены в файле с свойствами для нового профиля. Переменные можно непосредственно заносить в строчку **(1)** используя знак "=" для присвоения значения и разделяя переменные ";". Или можно добавлять их в специальном окне **(2)**.
 
+Environment variables `HIBERNATE_DDL=;MYPSQL_SERVER=;MYPSQL_PORT=;MYPSQL_DB=;DB_USERNAME=;DB_PASSWORD=`
+
 ![](src/main/resources/static/images/profiles_tutor/env_vars.png)
 
 ![](src/main/resources/static/images/profiles_tutor/env_vars_2.png)
@@ -624,13 +626,7 @@ this.mockMvc
 
 ### Переключение между профилями
 
-1. Если в конфигурации нигде не указано про профили, то переключение между профилями может осуществляться изменением строчки в application.properties явным вызовом интересующего профиля.
-
-![](src/main/resources/static/images/profiles_tutor/app_switch_prop.png)
-
-2. Выбор необходимой конфигурации для запуска приложения. Имеет больший приоритет чем предыдущий пункт.
-
-![](src/main/resources/static/images/profiles_tutor/switch_via_config.png)
+Вписываем в VM Option `-ea -Dspring.profiles.active=local/dev` - выбираем профиль для запуска
 
 ### Как узнать какой профиль активен
 
