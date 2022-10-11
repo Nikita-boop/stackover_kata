@@ -1,5 +1,6 @@
 package com.javamentor.qa.platform.service.impl.model;
 
+import com.javamentor.qa.platform.dao.abstracts.model.QuestionDao;
 import com.javamentor.qa.platform.dao.abstracts.repository.ReadWriteDao;
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.service.abstracts.model.QuestionService;
@@ -9,7 +10,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class QuestionServiceImpl extends ReadWriteServiceImpl<Question, Long> implements QuestionService {
 
-    public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao) {
+    private final QuestionDao questionDao;
+    public QuestionServiceImpl(ReadWriteDao<Question, Long> readWriteDao, QuestionDao questionDao) {
         super(readWriteDao);
+        this.questionDao = questionDao;
+    }
+
+    public Long getCountQuestion(){
+        return questionDao.getCountQuestion();
     }
 }
