@@ -2,12 +2,10 @@ package com.javamentor.qa.platform.models.dto;
 
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -31,6 +29,27 @@ public class UserDto {
     private LocalDateTime registrationDate;
     @Schema(description = "количество голосов пользователя")
     private Long votes;
-//    @Schema(description = "список топ-3 тэгов пользователя")
-//    private List<TagDto> listTop3TagDto;
+    @Schema(description = "список топ-3 тэгов пользователя")
+    private List<TagDto> listTop3TagDto;
+
+    public UserDto(Long id, String email, String fullName, String linkImage, String city, Integer reputation, LocalDateTime registrationDate, Integer votes) {
+        this.id = id;
+        this.email = email;
+        this.fullName = fullName;
+        this.linkImage = linkImage;
+        this.city = city;
+        this.reputation = Long.valueOf(reputation);
+        this.registrationDate = registrationDate;
+        this.votes = Long.valueOf(votes);
+    }
+    public UserDto(Long id, String email, String fullName, String linkImage, String city, Integer reputation, LocalDateTime registrationDate, Long votes) {
+        this.id = id;
+        this.email = email;
+        this.fullName = fullName;
+        this.linkImage = linkImage;
+        this.city = city;
+        this.reputation = Long.valueOf(reputation);
+        this.registrationDate = registrationDate;
+        this.votes = votes;
+    }
 }
