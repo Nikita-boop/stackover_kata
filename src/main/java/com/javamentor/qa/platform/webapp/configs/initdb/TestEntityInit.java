@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.initdb;
+package com.javamentor.qa.platform.webapp.configs.initdb;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
