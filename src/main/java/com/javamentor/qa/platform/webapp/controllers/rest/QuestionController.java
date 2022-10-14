@@ -22,7 +22,7 @@ public class QuestionController {
     private final QuestionService questionService;
     private final CommentDtoService commentDtoService;
 
-    public QuestionController(QuestionService questionService, CommentDtoService commentDtoService){
+    public QuestionController(QuestionService questionService, CommentDtoService commentDtoService) {
         this.questionService = questionService;
         this.commentDtoService = commentDtoService;
     }
@@ -42,10 +42,13 @@ public class QuestionController {
             summary = "Получение комментариев к вопросу",
             description = "Получение всех комментариев к вопросу")
     @GetMapping("/{id}/comment")
-    public ResponseEntity<List<QuestionCommentDto>> getAllCommentsOnQuestion(@PathVariable("id") long id) {
-        return new ResponseEntity<>(
-                commentDtoService.getAllQuestionCommentDtoById(id),
-                HttpStatus.OK
-        );
+    public ResponseEntity<List<QuestionCommentDto>> getAllCommentsOnQuestion(@PathVariable("id") Long questionId) {
+        if (questionService.existsById(questionId)) {
+            List<QuestionCommentDto> commentDtoList = commentDtoService.getAllQuestionCommentDtoById(questionId);
+            return commentDtoList.isEmpty()
+                    ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+                    : new ResponseEntity<>(commentDtoList, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
