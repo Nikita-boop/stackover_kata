@@ -1,4 +1,4 @@
-package com.javamentor.qa.platform.initdb;
+package com.javamentor.qa.platform.webapp.configs.initdb;
 
 import com.javamentor.qa.platform.models.entity.question.Question;
 import com.javamentor.qa.platform.models.entity.question.Tag;
