@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -17,22 +16,23 @@ public class CommentDtoDaoImpl implements CommentDtoDao {
 
     @Override
     public List<QuestionCommentDto> getAllQuestionCommentDtoById(long questionId) {
-
-        Query query = entityManager.createQuery("""
-                      select new com.javamentor.qa.platform.models.dto.QuestionCommentDto (
-                      q.id, cq.comment.lastUpdateDateTime, cq.comment.persistDateTime,
-                      cq.comment.text, u.id, u.imageLink, sum(r.count))
-                      from Question q
-                      join CommentQuestion cq on cq.question = q
-                      join User u on u = q.user
-                      join Reputation r on r.author = u
-                                     
-                      where q.id=:id
-                      
-                      group by cq.comment.id, u.id
-                      """, QuestionCommentDto.class).setParameter("id", questionId);
-
-        return query.getResultList();
+        return entityManager.createQuery("""
+                SELECT new com.javamentor.qa.platform.models.dto.QuestionCommentDto (
+                q.id,
+                cq.comment.lastUpdateDateTime,
+                cq.comment.persistDateTime,
+                cq.comment.text,
+                u.id,
+                u.imageLink,
+                SUM (r.count))
+                FROM CommentQuestion cq
+                    JOIN Question q ON q.id = cq.id
+                    JOIN User u ON u.id = q.user.id
+                    JOIN Reputation r ON r.author.id = cq.comment.user.id
+                WHERE q.id=:questionId
+                GROUP BY cq.comment.id, u.id
+                """, QuestionCommentDto.class)
+                .setParameter("questionId", questionId)
+                .getResultList();
     }
-
 }
