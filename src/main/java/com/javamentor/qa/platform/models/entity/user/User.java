@@ -21,6 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import java.io.Serial;
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -101,6 +102,12 @@ public class User implements UserDetails {
         this.password = password;
     }
 
+    @NotBlank
+    protected String firstName;
+
+    @NotBlank
+    protected String lastName;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singleton(role);
@@ -132,9 +139,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public boolean isEnabled() {
-        return isEnabled;
-    }
+    public boolean isEnabled() {return isEnabled;}
 
     @Override
     public boolean equals(Object o) {
