@@ -633,3 +633,19 @@ Environment variables `HIBERNATE_DDL=;SQL_DB=;MYPSQL_SERVER=;MYPSQL_PORT=;MYPSQL
 При запуске приложения это можно увидеть в консоле (вторая строчка)
 
 ![](src/main/resources/static/images/profiles_tutor/active_profile.png)
+
+## Как тестировать API через PostMan
+
+### Авторизация через PostMan
+
+![](src/main/resources/static/images/git_tutor/postman_auth.png)
+
+Для авторизации запроса заходим во вкладку Authorization, в поле Type (1) выбираем Basic Auth, в полях Username и Password (2) вводим данные пользователя из БД.
+
+### Создание запросов через PostMan
+
+![](src/main/resources/static/images/git_tutor/postman_req.png)
+
+В поле (1) можно выбрать тип запроса, в строке (3) вводим адрес запроса, в полях ниже (2) задаются параметры запроса, а так же посмотреть заголовки запроса во вкладке Headers. После нажатия на кнопку Send внизу отобразится ответ.
+
+![](src/main/resources/static/images/git_tutor/postman_req_answ.png)
