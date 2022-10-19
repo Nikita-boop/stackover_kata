@@ -5,5 +5,5 @@ import com.javamentor.qa.platform.models.dto.PageDto;
 import java.util.Map;
 
 public interface PaginationDtoService<T> {
-    PageDto<T> getPageDtoWithParameters(Map<String, Object> parameters);
+    PageDto<T> getPageDto(Map<String, Object> parameters);
 }

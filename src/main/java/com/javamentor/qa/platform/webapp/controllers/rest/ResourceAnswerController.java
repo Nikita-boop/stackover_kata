@@ -15,7 +15,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -23,6 +26,7 @@ import javax.validation.constraints.NotEmpty;
 @RequestMapping("/api/user/question/{questionId}/answer")
 @Tag(name = "CommentAnswer", description = "CommentAnswer API")
 public class ResourceAnswerController {
+
     private final CommentAnswerDtoService commentAnswerDtoService;
     private final CommentAnswerService commentAnswerService;
     private final AnswerService answerService;
@@ -40,16 +44,14 @@ public class ResourceAnswerController {
                     schema = @Schema(implementation = CommentAnswerDto.class)))
     @ApiResponse(responseCode = "400", description = "комментарий не добавлен")
     @PostMapping("/{answerId}/comment")
-    public ResponseEntity<?> postCommentToAnswer(
-            @Parameter(description = "id вопроса", required = true) @PathVariable("questionId") Long questionId,
+    public ResponseEntity<CommentAnswerDto> postCommentToAnswer(
             @Parameter(description = "id ответа на вопрос", required = true) @PathVariable("answerId") Long answerId,
-            @NotNull @NotEmpty @RequestBody String comment,
+            @NotNull @NotEmpty @org.springframework.web.bind.annotation.RequestBody String comment,
             @AuthenticationPrincipal User user) {
         if (answerService.getById(answerId).isPresent()) {
             commentAnswerService.addCommentToAnswer(answerId, comment, user);
             return new ResponseEntity<>(commentAnswerDtoService.getCommentById(answerId).get(), HttpStatus.OK);
         }
-
-        return new ResponseEntity<>("Answer with id: " + answerId + " not found", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
