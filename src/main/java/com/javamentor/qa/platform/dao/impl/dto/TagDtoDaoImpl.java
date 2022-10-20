@@ -2,6 +2,7 @@ package com.javamentor.qa.platform.dao.impl.dto;
 
 import com.javamentor.qa.platform.dao.abstracts.dto.TagDtoDao;
 import com.javamentor.qa.platform.models.dto.RelatedTagDto;
+import com.javamentor.qa.platform.models.dto.TrackedTagDto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -24,5 +25,18 @@ public class TagDtoDaoImpl implements TagDtoDao {
                 order by tag.questions.size desc
                 """, RelatedTagDto.class).setMaxResults(10).getResultList();
         return tagDtos;
+    }
+
+    @Override
+    public List<TrackedTagDto> getTrackedByUserId(Long id) {
+        List<TrackedTagDto> TrackedTagsDtos = entityManager.createQuery("""
+                select new com.javamentor.qa.platform.models.dto.TrackedTagDto(
+                tag.id, tag.trackedTag.name)
+                from TrackedTag tag
+                where tag.user.id = :id
+                group by tag.id
+                order by tag.id desc
+                """, TrackedTagDto.class).setParameter("id", id).getResultList();
+        return TrackedTagsDtos;
     }
 }
