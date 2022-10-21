@@ -16,7 +16,7 @@ public class TagDtoDaoImpl implements TagDtoDao {
     private EntityManager entityManager;
 
     @Override
-    public List<RelatedTagDto> getTopTags() {
+    public List<RelatedTagDto> getTop10Tags() {
         List<RelatedTagDto> tagDtos = entityManager.createQuery("""
                 select new com.javamentor.qa.platform.models.dto.RelatedTagDto(
                 tag.id, tag.description, sum(tag.questions.size))
