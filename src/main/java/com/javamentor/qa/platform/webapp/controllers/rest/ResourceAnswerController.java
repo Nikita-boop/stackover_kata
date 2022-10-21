@@ -66,6 +66,7 @@ public class ResourceAnswerController {
         if (answerService.getById(answerId).isPresent()) {
             answerService.deleteById(answerId);
             return new ResponseEntity<>(HttpStatus.OK);
-        } else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
