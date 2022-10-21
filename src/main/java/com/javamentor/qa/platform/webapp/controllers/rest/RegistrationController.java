@@ -1,20 +1,15 @@
 package com.javamentor.qa.platform.webapp.controllers.rest;
 
-import com.javamentor.qa.platform.models.dto.UserDto;
 import com.javamentor.qa.platform.models.dto.UserRegistrationDto;
 import com.javamentor.qa.platform.models.entity.user.User;
-import com.javamentor.qa.platform.service.abstracts.model.RoleService;
 import com.javamentor.qa.platform.service.abstracts.model.UserService;
-import com.javamentor.qa.platform.webapp.converters.UserConverter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,35 +28,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/user/registration")
 public class RegistrationController {
-    @Autowired
+
     private UserService userService;
-
-    @Autowired
-    private RoleService roleService;
-
-    @Autowired
     private JavaMailSender mailSender;
 
-    @Autowired
-    private UserConverter userConverter;
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
-    public RegistrationController(UserService userService,
-                                  RoleService roleService,
-                                  JavaMailSender javaMailSender,
-                                  UserConverter userConverter,
-                                  AuthenticationManager authenticationManager) {
-        this.userService = userService;
-        this.roleService = roleService;
-        this.mailSender = javaMailSender;
-        this.userConverter = userConverter;
-        this.authenticationManager = authenticationManager;
-    }
-
     @Value("${EXPIRATION_TIME_IN_MINUTES}")
-    private int EXPIRATION_TIME_IN_MINUTES;
+    private final int EXPIRATION_TIME_IN_MINUTES;
     @Value("${spring.mail.username}")
     private String fromAddress;
     @Value("${sender.name}")
