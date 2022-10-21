@@ -20,7 +20,7 @@ public class TagDtoServiceImpl implements TagDtoService {
     @Override
     @Transactional
     public List<RelatedTagDto> getTop10Tags() {
-        return tagDtoDao.getTopTags();
+        return tagDtoDao.getTop10Tags();
     }
 
     @Override
